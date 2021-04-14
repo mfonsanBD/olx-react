@@ -1,6 +1,7 @@
 import React from 'react';
 // import {useSelector, useDispatch} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import "./App.css";
 import Routes from './Routes';
 import {Template} from './components/MainComponents';
 import Header from './components/partials/Header';
