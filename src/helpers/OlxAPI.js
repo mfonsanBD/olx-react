@@ -55,6 +55,21 @@ const OlxAPI = {
             {email, password}
         );
         return json;
+    },
+
+    cadastro : async (name, stateLoc, email, password) => {
+        const json = await requisicaoPost(
+            '/user/signup',
+            {name, email, password, state:stateLoc}
+        );
+        return json;
+    },
+
+    getStates:async()=>{
+        const json = await requisicaoGet(
+            '/states'
+        );
+        return json.states;
     }
 };
 

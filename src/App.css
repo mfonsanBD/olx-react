@@ -11,6 +11,10 @@ body{
   background-color: #F9F9F9;
 }
 
+button{
+  font-family: 'Poppins', sans-serif;
+}
+
 a{
     text-decoration:none;
 }
