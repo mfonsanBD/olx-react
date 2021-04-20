@@ -13,3 +13,7 @@ export const doLogin = (token, lembrar = false) => {
         Cookies.set("token", token);
     }
 }
+
+export const doLogout = () => {
+    Cookies.remove('token');
+}

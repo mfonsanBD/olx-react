@@ -47,9 +47,13 @@ export const HeaderArea = styled.div`
         li{
             margin:0 10px;
 
-            a{
+            a, button{
+                border:0;
+                background:none;
                 color:#313131;
                 font-size:14px;
+                cursor:pointer;
+                outline:0;
 
                 &:hover{
                     color:#888888;

@@ -49,10 +49,10 @@ const requisicaoGet = async (endpoint, body = []) => {
 }
 
 const OlxAPI = {
-    login : async (email, senha) => {
+    login : async (email, password) => {
         const json = await requisicaoPost(
             '/user/signin',
-            {email, senha}
+            {email, password}
         );
         return json;
     }
