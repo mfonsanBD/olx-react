@@ -70,6 +70,21 @@ const OlxAPI = {
             '/states'
         );
         return json.states;
+    },
+
+    getCategorias:async()=>{
+        const json = await requisicaoGet(
+            '/categories'
+        );
+        return json.categories;
+    },
+
+    getAds:async(options)=>{
+        const json = await requisicaoGet(
+            '/ad/list',
+            options
+        );
+        return json;
     }
 };
 

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const PageArea = styled.div`
+    width:60%;
+    margin:auto;
+
     form{
         background-color:#FFF;
         border-radius:5px;
@@ -9,9 +12,10 @@ export const PageArea = styled.div`
 
         .area{
             display:flex;
-            items-align:center;
+            align-items:center;
             padding:10px;
             max-width:500px;
+            justify-content:center;
 
             .area--title{
                 width:200px;
@@ -38,7 +42,7 @@ export const PageArea = styled.div`
                 }
                 button{
                     width:100%;
-                    background-color:#007bff;
+                    background-color:#FF8100;
                     color:#FFF;
                     border:0;
                     outline:0;
@@ -48,7 +52,7 @@ export const PageArea = styled.div`
                     display:block;
 
                     &:hover{
-                        background-color:#0065d1;
+                        background-color:#E57706;
                     }
                 }
             }

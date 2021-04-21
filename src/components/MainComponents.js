@@ -12,6 +12,7 @@ export const PageBody = styled.div``;
 export const PageTitle = styled.h1`
     font-size:27px;
     color:#313131;
+    text-align:center;
 `;
 
 export const MensagemDeErro = styled.div`
