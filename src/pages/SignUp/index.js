@@ -23,7 +23,8 @@ const Page = () => {
             setListaDeEstados(sList);
         }
         getStates();
-    }, [])
+        // eslint-disable-next-line
+    }, []);
 
     const envio = async (e) => {
         e.preventDefault();

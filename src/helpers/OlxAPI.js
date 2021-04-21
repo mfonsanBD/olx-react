@@ -87,5 +87,5 @@ const OlxAPI = {
         return json;
     }
 };
-
+// eslint-disable-next-line
 export default () => OlxAPI;

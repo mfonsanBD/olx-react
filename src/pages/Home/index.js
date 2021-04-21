@@ -17,6 +17,7 @@ const Page = () => {
             setCategorias(listaCategorias);
         }
         getCategorias();
+        // eslint-disable-next-line
     },[]);
 
     useEffect(()=>{
@@ -28,6 +29,7 @@ const Page = () => {
             setAdList(json.ads);
         }
         getRecentAds();
+        // eslint-disable-next-line
     }, []);
 
     return(
