@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Item} from './styled';
 
-export default (props)=>{
+const LatestItems = (props)=>{
     let price = '';
 
     if(props.data.priceNegotiable){
@@ -23,3 +23,5 @@ export default (props)=>{
         </Item>
     );
 };
+
+export default LatestItems;

@@ -12,15 +12,15 @@ const Page = () => {
     const [adList, setAdList] = useState([]);
 
     useEffect(()=>{
-        const getCategorias = async (e) =>{
+        const getCategorias = async () => {
             const listaCategorias = await api.getCategorias();
             setCategorias(listaCategorias);
         }
         getCategorias();
-    }, []);
+    },[]);
 
     useEffect(()=>{
-        const getRecentAds = async (e) =>{
+        const getRecentAds = async () =>{
             const json = await api.getAds({
                 sort: 'desc',
                 limit: 8
