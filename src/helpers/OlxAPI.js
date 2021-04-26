@@ -50,40 +50,32 @@ const requisicaoGet = async (endpoint, body = []) => {
 
 const OlxAPI = {
     login : async (email, password) => {
-        const json = await requisicaoPost(
-            '/user/signin',
-            {email, password}
-        );
+        const json = await requisicaoPost('/user/signin', {email, password});
         return json;
     },
 
-    cadastro : async (name, stateLoc, email, password) => {
-        const json = await requisicaoPost(
-            '/user/signup',
-            {name, email, password, state:stateLoc}
-        );
+    cadastro : async (name, state, email, password) => {
+        const json = await requisicaoPost('/user/signup', {name, email, password, state});
         return json;
     },
 
-    getStates:async()=>{
-        const json = await requisicaoGet(
-            '/states'
-        );
+    getStates:async () => {
+        const json = await requisicaoGet('/states');
         return json.states;
     },
 
-    getCategorias:async()=>{
-        const json = await requisicaoGet(
-            '/categories'
-        );
+    getCategorias:async () => {
+        const json = await requisicaoGet('/categories');
         return json.categories;
     },
 
-    getAds:async(options)=>{
-        const json = await requisicaoGet(
-            '/ad/list',
-            options
-        );
+    getAds:async (options) => {
+        const json = await requisicaoGet('/ad/list', options);
+        return json;
+    },
+
+    getAd:async (id, other = false) => {
+        const json = await requisicaoGet('/ad/item', {id, other});
         return json;
     }
 };
