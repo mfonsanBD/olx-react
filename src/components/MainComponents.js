@@ -16,6 +16,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const MensagemDeErro = styled.div`
+    width:60%;
     background-color: #f8d7da;
     color:#721c24;
     margin:10px auto;

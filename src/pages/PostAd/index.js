@@ -4,10 +4,12 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import useAPI from '../../helpers/OlxAPI';
 import {PageArea} from './styled';
 import {MensagemDeErro, PageContainer, PageTitle} from '../../components/MainComponents';
+import { useHistory } from 'react-router';
 
 const Page = () => {
     const api           = useAPI();
     const fileField     = useRef();
+    const history       = useHistory();
 
     const [titulo, setTitulo]               = useState('');
     const [categoria, setCategoria]         = useState('');
@@ -34,7 +36,44 @@ const Page = () => {
         setDesabled(true);
         setError('');
 
-        
+        let errors = [];
+
+        if(!titulo.trim()){
+            errors.push('O campo TÍTULO é obrigatório.');
+        }
+        if(!categoria){
+            errors.push('O campo CATEGORIA é obrigatório.');
+        }
+
+        if(errors.length === 0){
+            const formulario = new FormData();
+
+            formulario.append("title", titulo);
+            formulario.append("price", preco);
+            formulario.append("priceneg", negociavel);
+            formulario.append("desc", descricao);
+            formulario.append("cat", categoria);
+
+            if(fileField.current.files.length > 0){
+                for(let i=0; i < fileField.current.files.length; i++){
+                    formulario.append("img", fileField.current.files[i]);
+                }
+            }
+
+            const json = await api.postAd(formulario);
+
+            if(!json.error){
+                history.push(`/ad/${json.id}`);
+                return;
+            }
+            else{
+                setError(json.error);
+            }
+
+        }
+        else{
+            setError(errors.join("\n"));
+        }
 
         setDesabled(false);
     }
@@ -46,6 +85,8 @@ const Page = () => {
        allowDecimal: true,
        decimalSymbol:',' 
     });
+
+    document.title = "Poste seu anúncio - Clone OLX";
 
     return(
         <PageContainer>
