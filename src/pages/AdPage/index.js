@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
+import {Slide} from 'react-slideshow-image';
 import useAPI from '../../helpers/OlxAPI';
-import {PageArea, Fake, FakeR, Breadcrumb} from './styled';
+import {PageArea, Fake, FakeR, Breadcrumb, OthersArea} from './styled';
 import {PageContainer} from '../../components/MainComponents';
+import AdItem from '../../components/partials/AdItem';
 
 const Page = () => {
     const api = useAPI();
@@ -46,65 +48,80 @@ const Page = () => {
         return price;
     }
 
+    document.title = adInfo.title+" - Clone OLX";
+
     return(
         <PageContainer>
-            <Breadcrumb>
-                <Link to="/">Página Inicial</Link> &gt; <Link to="/ad">Anúncios</Link> &gt; Nome do Anúncio
-            </Breadcrumb>
+            {adInfo.category &&
+                <Breadcrumb>
+                    Você está em:&ensp;
+                    <Link to="/">Página Inicial</Link>
+                    &ensp;&gt;&ensp;
+                    <Link to="/ads">Anúncios</Link>
+                    &ensp;&gt;&ensp;
+                    <Link to={`/ads?state=${adInfo.stateName}`}>{adInfo.stateName}</Link>
+                    &ensp;&gt;&ensp;
+                    <Link to={`/ads?state=${adInfo.stateName}&cat=${adInfo.category.slug}`}>{adInfo.category.name}</Link>
+                    &ensp;&gt;&ensp;
+                    {adInfo.title}
+                </Breadcrumb>
+            }
             <PageArea>
                 <div className="leftSide">
-                    <div className="adTitulo">
-                        {loading &&
-                            <Fake height="20"/>
-                        }
-                        {adInfo.title &&
-                            <h1>{adInfo.title}</h1>
-                        }
-                        <div className="infoDate">
+                    <div className="newBox">
+                        <div className="adImagem">
                             {loading &&
-                                <Fake height="10"/>
+                                <Fake height="300"/>
                             }
-                            {adInfo.dateCreated &&
-                                <span>
-                                    Criado em: 
-                                    {
-                                        formatDate(adInfo.dateCreated)
-                                    } &#8211;
-                                    por: {adInfo.userInfo.name} &#8211;
-                                    estado: {adInfo.stateName}
-                                </span>
+                            {adInfo.images &&
+                                <Slide>
+                                    {adInfo.images.map((img, k) => 
+                                        <div key={k} className="each-slide">
+                                            <img src={img} alt="" height="320px"/>
+                                        </div>
+                                    )}
+                                </Slide>
                             }
                         </div>
-                    </div>
-                    <div className="adImagem">
-                        {loading &&
-                            <Fake height="300"/>
-                        }
-                        {adInfo.images &&
-                            <img src={adInfo.images} alt={adInfo.title}/>
-                        }
-                    </div>
-                    <div className="adPreco">
-                        {loading &&
-                            <Fake height="40"/>
-                        }
-                        {adInfo.price && 
-                            <h2>{formataPreco(adInfo.price, adInfo.priceNegotiable)}</h2>
-                        }
-                    </div>
-                    <div className="adDescricao">
-                        {loading &&
-                            <Fake height="200"/>
-                        }
-                        {adInfo.description}
-                    </div>
-                    <div className="adVisualizacoes">
-                        {loading &&
-                            <Fake height="20"/>
-                        }
-                        {adInfo.views &&
-                            <small>Visualizações no anúncio: {adInfo.views}</small>
-                        }
+                        <div className="adInfor">
+                            <div className="adTitulo">
+                                {loading &&
+                                    <Fake height="20"/>
+                                }
+                                {adInfo.title &&
+                                    <h1>{adInfo.title}</h1>
+                                }
+                                <div className="infoDate">
+                                    {loading &&
+                                        <Fake height="10"/>
+                                    }
+                                    {adInfo.dateCreated &&
+                                        <span>
+                                            Criado em: 
+                                            {
+                                                formatDate(adInfo.dateCreated)
+                                            } &#8211;
+                                            por: {adInfo.userInfo.name} &#8211;
+                                            estado: {adInfo.stateName}
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            <div className="adDescricao">
+                                {loading &&
+                                    <Fake height="200"/>
+                                }
+                                {adInfo.description}
+                            </div>
+                            <div className="adVisualizacoes">
+                            {loading &&
+                                <Fake height="20"/>
+                            }
+                            {adInfo.views &&
+                                <small>Visualizado: {adInfo.views} vezes.</small>
+                            }
+                        </div>
+                        </div>
                     </div>
                 </div>
                 <div className="rightSide">
@@ -124,7 +141,7 @@ const Page = () => {
                             {adInfo.userInfo && 
                                 <>
                                 <h2>{adInfo.userInfo.name}</h2>
-                                <p>{adInfo.userInfo.email}</p>
+                                <small><a href={`mailto:${adInfo.userInfo.email}`}>Contate Este Vendedor</a></small>
                                 </>
                             }
                         </div>
@@ -134,10 +151,31 @@ const Page = () => {
                             {loading &&
                                 <Fake height="20"/>
                             }
+                            {adInfo.userInfo && 
+                                <div>
+                                    <h3>Dicas de segurança</h3>
+                                    <ul>
+                                        <li>Não faça pagamentos antes de verificar se o produto existe.</li>
+                                    </ul>
+                                    <small><a href="https://google.com">Clique para ver todas as dicas</a></small>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
             </PageArea>
+            <OthersArea>
+                {adInfo.others &&
+                    <>
+                        <h2>Outros anúncios do vendedor</h2>
+                        <div className="list">
+                            {adInfo.others.map((i, k) =>
+                                <AdItem key={k} data={i}/>
+                            )}
+                        </div>
+                    </>
+                }
+            </OthersArea>
         </PageContainer>
     );
 }

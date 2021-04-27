@@ -1,38 +1,49 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
+import RouteHendler from './components/RouteHendler';
 import Home from './pages/Home';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import AdPage from './pages/AdPage';
+import AdItems from './pages/AdItems';
+import PostAd from './pages/PostAd';
 
 const Rotas = () => {
     return(
         <Switch>
-            <Route exact path="/">
+            <RouteHendler exact path="/">
                 <Home/>
-            </Route>
+            </RouteHendler>
             
-            <Route exact path="/sobre">
+            <RouteHendler exact path="/sobre">
                 <About/>
-            </Route>
+            </RouteHendler>
             
-            <Route exact path="/signin">
+            <RouteHendler exact path="/signin">
                 <SignIn/>
-            </Route>
+            </RouteHendler>
             
-            <Route exact path="/signup">
+            <RouteHendler exact path="/signup">
                 <SignUp/>
-            </Route>
+            </RouteHendler>
             
-            <Route exact path="/ad/:id">
+            <RouteHendler exact path="/ad/:id">
                 <AdPage/>
-            </Route>
+            </RouteHendler>
             
-            <Route>
+            <RouteHendler exact path="/ads">
+                <AdItems/>
+            </RouteHendler>
+            
+            <RouteHendler private exact path="/post-ad">
+                <PostAd/>
+            </RouteHendler>
+            
+            <RouteHendler>
                 <NotFound/>
-            </Route>
+            </RouteHendler>
         </Switch>
     );
 }

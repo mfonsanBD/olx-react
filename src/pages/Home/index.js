@@ -32,6 +32,8 @@ const Page = () => {
         // eslint-disable-next-line
     }, []);
 
+    document.title = "Classificados - Clone OLX";
+
     return(
         <>
             <SearchArea>

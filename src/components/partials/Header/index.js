@@ -28,14 +28,14 @@ const Header = () => {
                             <>
                                 <li><Link to="/my-account">Minha Conta</Link></li>
                                 <li><button onClick={sair}>Sair</button></li>
-                                <li><Link to="/add-an-ad" className="button">Publicar Anúncio</Link></li>
+                                <li><Link to="/post-ad" className="button">Publicar Anúncio</Link></li>
                             </>
                         }
                         {!logged &&
                             <>
                                 <li><Link to="/signin">Login</Link></li>
                                 <li><Link to="/signup">Cadastrar</Link></li>
-                                <li><Link to="/signin" className="button">Publicar Anúncio</Link></li>
+                                <li><Link to="/post-ad" className="button">Publicar Anúncio</Link></li>
                             </>
                         }
                     </ul>

@@ -32,7 +32,7 @@ export const PageArea = styled.div`
         background-color:#FFF;
         border:1px solid #D8D8D8;
         margin-bottom:10px;
-        padding:10px;
+        padding:20px;
         border-radius:8px;
         border-top:8px solid #333;
     }
@@ -41,9 +41,15 @@ export const PageArea = styled.div`
         flex:1;
         margin-right:20px;
 
-        .adTitulo{
-            margin-bottom:20px;
+        .newBox{
+            display:flex;
+        }
 
+        .adInfor{
+            flex:1;
+        }
+
+        .adTitulo{
             h1{
                 margin:0;
             }
@@ -54,14 +60,20 @@ export const PageArea = styled.div`
             }
         }
         .adImagem{
-            margin-bottom:10px;
+            width:320px;
+            height:320px;
+            margin-right:20px;
 
-            img{
-                width:100%;
+            each-slide img{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                background-size:cover;
+                width:320px;
             }
         }
         .adPreco{
-            width:30%;
+            width:100%;
             margin-bottom:20px;
             color:#444;
 
@@ -70,9 +82,8 @@ export const PageArea = styled.div`
             }
         }
         .adDescricao{
-            border-top:1px solid #DDD;
             border-bottom:1px solid #DDD;
-            padding:20px 0;
+            padding:20px 0 10px;
             margin-bottom:10px;
         }
     }
@@ -97,9 +108,59 @@ export const PageArea = styled.div`
             h2{
                 margin:0;
             }
-            p{
+            small{
+                margin:0;
+
+                a{
+                    color:#6e0ad6;
+                    transition:all ease .4s;
+            
+                    &:hover{
+                        color:#888;
+                    }
+                }
+            }
+        }
+        .adAlerta{
+            text-align:center;
+
+            h3{
                 margin:0;
             }
+
+            ul{
+                padding:0;
+            }
+            
+            li{
+                font-size:14px;
+                margin-bottom:20px;
+                font-size:14px;
+            }
+
+            a{
+                color:#6e0ad6;
+                transition:all ease .4s;
+        
+                &:hover{
+                    color:#888;
+                }
+            }
+        }
+    }
+`;
+
+export const OthersArea = styled.div`
+    h2{
+        font-size:20px;
+    }
+
+    .list{
+        display:flex;
+        flex-wrap:wrap;
+
+        .aditem{
+            width:25%;
         }
     }
 `;
