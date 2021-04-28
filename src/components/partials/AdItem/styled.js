@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Item = styled.div`
     a{
         display:block;
-        margin:15px 5px;
+        margin:0 5px 15px;
         background-color:#FFF;
         border-radius:10px;
         border:1px solid #FFF;
