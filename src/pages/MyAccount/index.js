@@ -3,6 +3,7 @@ import useAPI from '../../helpers/OlxAPI';
 import {PageArea} from './styled';
 import {PageContainer, Breadcrumb, MensagemDeErro} from '../../components/MainComponents';
 import { Link } from 'react-router-dom';
+import AdItemUser from '../../components/partials/AdItemUser';
 
 const Page = () => {
     const api = useAPI();
@@ -56,10 +57,6 @@ const Page = () => {
         }
 
         setDesabled(false);
-    }
-
-    const mostraId = (id) => {
-        alert(id);
     }
 
     document.title = "Minha Conta - Clone OLX";
@@ -126,31 +123,13 @@ const Page = () => {
                         </div>
                     </form>
                     </div>
+                    <h2>Meus anúncios</h2>
                     <div className="sessao">
-                        <table width="100%">
-                            <thead>
-                                <tr>
-                                    <td><strong>Foto</strong></td>
-                                    <td><strong>Título</strong></td>
-                                    <td><strong>Categoria</strong></td>
-                                    <td><strong>Status</strong></td>
-                                    <td><strong>#</strong></td>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div className="anunciosUser">
                             {adsUser.map((i, k)=>
-                                <tr key={k}>
-                                    <td>
-                                        <img src={`http://alunos.b7web.com.br:501/media/${i.images[0].url}`} alt={i.title} width="120"/>
-                                    </td>
-                                    <td>{i.title}</td>
-                                    <td>{i.category}</td>
-                                    <td>{i.status ? "Publicado" : "Não Publicado"}</td>
-                                    <td><div className="botaoEditar" onClick={()=>mostraId(i.id)}>E</div></td>
-                                </tr>
+                                <AdItemUser key={k} data={i}/>
                             )}
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
                 </PageArea>
             </PageContainer>

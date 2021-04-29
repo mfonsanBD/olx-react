@@ -72,4 +72,20 @@ export const HeaderArea = styled.div`
             }
         }
     }
+
+    @media (max-width:600px){
+        &{
+            height:auto;
+        }
+        .container{
+            flex-direction:column;
+        }
+        .logo{
+            margin-top:10px;
+            justify-content:center;
+        }
+        nav ul{
+            justify-content:center;
+        }
+    }
 `;

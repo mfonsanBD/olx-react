@@ -58,4 +58,17 @@ export const PageArea = styled.div`
             }
         }
     }
+
+    @media(max-width:600px){
+        width:100%;
+
+        form{
+            padding:10px;
+    
+            .area{
+                .area--title{
+                    width:100px;
+                }
+            }
+    }
 `;

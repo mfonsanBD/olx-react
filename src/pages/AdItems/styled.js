@@ -178,6 +178,30 @@ export const PageArea = styled.div`
             }
         }
     }
+
+    @media(max-width:600px){
+        flex-direction:column;
+        margin-top:20px;
+        
+        .leftSide{
+            width:100%;
+            margin-bottom:20px;
+
+            .boxFilter ul{
+                padding:0;
+                display:flex;
+
+                .listaCategorias{
+                    width:25%;
+                    flex-direction:column;
+                    flex-wrap:wrap;
+                }
+            }
+        }
+        .rightSide .list .aditem{
+            width:100%;
+        }
+    }
 `;
 
 export const Breadcrumb = styled.div`

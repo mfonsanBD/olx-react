@@ -5,6 +5,10 @@ export const Template = styled.div``;
 export const PageContainer = styled.div`
     max-width:1000px;
     margin:auto;
+
+    @media(max-width:600px){
+        max-width:380px;
+    }
 `;
 
 export const PageBody = styled.div``;

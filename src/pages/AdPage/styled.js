@@ -150,6 +150,32 @@ export const PageArea = styled.div`
             }
         }
     }
+
+    @media(max-width:600px){
+        &{
+            flex-direction:column;
+        }
+        .leftSide{
+            margin-right:0;
+
+            .newBox{
+                flex-direction:column;
+                margin:20px auto;
+    
+                .adImagem{
+                    margin-bottom:20px;
+                    margin-right:0;
+                }
+            }
+        }
+        .rightSide{
+            width:100%;
+
+            .adPrecoR{
+                border-radius:10px 50px 50px 10px;
+            }
+        }
+    }
 `;
 
 export const OthersArea = styled.div`
@@ -163,6 +189,14 @@ export const OthersArea = styled.div`
 
         .aditem{
             width:25%;
+        }
+    }
+
+    @media(max-width:600px){
+        .list{    
+            .aditem{
+                width:50%;
+            }
         }
     }
 `;

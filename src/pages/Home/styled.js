@@ -33,6 +33,14 @@ export const PageArea = styled.div`
         font-size:12px;
         margin-bottom:30px;
     }
+
+    @media (max-width:600px){
+        .list{
+            .aditem{
+                width:50%;
+            }
+        }
+    }
 `;
 
 export const SearchArea = styled.div`
@@ -104,6 +112,50 @@ export const SearchArea = styled.div`
             img{
                 width:45px;
                 height:45px;
+            }
+        }
+    }
+
+    @media (max-width:600px){
+        padding:20px;
+
+        form{
+            flex-direction:column;
+    
+            input{
+                font-size:14px;
+                padding:10px;
+                border-radius:4px;
+                margin-bottom:10px;
+        
+                ::-webkit-input-placeholder {
+                    font-size:14px;
+                }
+                  
+                :-ms-input-placeholder {
+                    font-size:14px;
+                }
+                  
+                ::placeholder {
+                    font-size:14px;
+                }
+            }
+            button{
+                padding:10px;
+                border-radius:4px;
+                font-size:14px;
+            }
+        }
+        .categoryList{
+            margin-top:20px;
+    
+            .categoryItem{
+                font-size:14px;
+
+                img{
+                    width:35px;
+                    height:35px;
+                }
             }
         }
     }

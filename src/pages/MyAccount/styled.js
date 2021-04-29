@@ -15,6 +15,10 @@ export const PageArea = styled.div`
         border-radius:10px;
         box-shadow:0 0 10px #EDEDED;
 
+        .anunciosUser{
+            display:flex;
+        }
+
         .botaoEditar{
             width:35px;
             height:35px;
@@ -36,7 +40,8 @@ export const PageArea = styled.div`
     }
     .formConta{
         display:flex;
-        align-items:flex-end;
+        align-items:center;
+        justify-content:center;
 
         .shrink-1 {
             flex-grow: 1;
@@ -46,7 +51,7 @@ export const PageArea = styled.div`
         .shrink-3 {
             flex-grow: 1;
             flex-shrink: 3;
-            flex-basis: 0;
+            flex-basis: 8%;
         }
 
         .area{
@@ -62,6 +67,7 @@ export const PageArea = styled.div`
                 border-radius:5px;
                 outline:0;
                 transition:all ease .4s;
+                margin-bottom:10px;
 
                 &:focus{
                     border:1px solid #666;
@@ -69,6 +75,7 @@ export const PageArea = styled.div`
             }
             button{
                 width:100%;
+                margin-top:12px;
                 background-color:#28a745;
                 color:#FFF;
                 border:0;
@@ -88,5 +95,37 @@ export const PageArea = styled.div`
         color:#4a4a4a;
         font-size:12px;
         margin-bottom:30px;
+    }
+
+    @media(max-width:600px){
+        .sessao{
+            padding:10px;
+            margin-bottom:20px;
+            border-radius:8px;
+        }
+
+        .formConta{
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+
+            .shrink-1 {
+                width:90%;
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+
+            .shrink-3 {
+                width:90%;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: 0;
+            }
+
+            .area{
+                width:100%;
+                margin:0;
+            }
+        }
     }
 `;
