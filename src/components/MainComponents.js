@@ -23,3 +23,17 @@ export const MensagemDeErro = styled.div`
     padding:10px;
     border-radius:5px;
 `;
+
+export const Breadcrumb = styled.div`
+    margin-top:20px;
+    font-size:12px;
+    color:#888;
+
+    a{
+        color:#888;
+
+        &:hover{
+            color:#7d00ff;
+        }
+    }
+`;

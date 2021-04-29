@@ -51,6 +51,32 @@ const requisicaoPost = async (endpoint, body) => {
     return json;
 }
 
+const requisicaoPut = async (endpoint, body) => {
+    if(!body.token){
+        let token = Cookies.get('token');
+        if(token){
+            body.token = token;
+        }
+    }
+    const resposta = await fetch(BASEAPI + endpoint, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
+
+    const json = await resposta.json();
+
+    if(json.notallowed){
+        window.location.href = "/signin";
+        return;
+    }
+
+    return json;
+}
+
 const requisicaoGet = async (endpoint, body = []) => {
     if(!body.token){
         let token = Cookies.get('token');
@@ -81,6 +107,11 @@ const OlxAPI = {
         return json;
     },
 
+    getDados : async () => {
+        const json = await requisicaoGet('/user/me');
+        return json;
+    },
+
     getStates:async () => {
         const json = await requisicaoGet('/states');
         return json.states;
@@ -108,6 +139,11 @@ const OlxAPI = {
 
     postAd:async (fData) => {
         const json = await requisicaoFile('/ad/add', fData);
+        return json;
+    },
+
+    alteraUser:async (name, state, email) => {
+        const json = await requisicaoPut('/user/me', {name, email, state});
         return json;
     }
 };

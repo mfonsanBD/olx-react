@@ -107,6 +107,7 @@ export const PageArea = styled.div`
 
             h2{
                 margin:0;
+                line-height: 1;
             }
             small{
                 margin:0;
@@ -136,6 +137,7 @@ export const PageArea = styled.div`
                 font-size:14px;
                 margin-bottom:20px;
                 font-size:14px;
+                color:#888888;
             }
 
             a{

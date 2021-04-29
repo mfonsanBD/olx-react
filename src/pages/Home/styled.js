@@ -31,7 +31,7 @@ export const PageArea = styled.div`
     .pageText{
         color:#4a4a4a;
         font-size:12px;
-        margin-bottom:50px;
+        margin-bottom:30px;
     }
 `;
 

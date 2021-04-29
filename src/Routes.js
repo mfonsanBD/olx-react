@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import AdPage from './pages/AdPage';
 import AdItems from './pages/AdItems';
 import PostAd from './pages/PostAd';
+import MyAccount from './pages/MyAccount';
 
 const Rotas = () => {
     return(
@@ -39,6 +40,10 @@ const Rotas = () => {
             
             <RouteHendler private exact path="/post-ad">
                 <PostAd/>
+            </RouteHendler>
+            
+            <RouteHendler private exact path="/my-account">
+                <MyAccount/>
             </RouteHendler>
             
             <RouteHendler>

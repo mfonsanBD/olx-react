@@ -169,7 +169,8 @@ export const PageArea = styled.div`
                 cursor:pointer;
                 transition:all ease .4s;
 
-                &:hover{
+                &:hover,
+                &.ativo{
                     background-color:#6e0ad6;
                     border:1px solid #FFFFFF;
                     color:#FFFFFF;

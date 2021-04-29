@@ -24,6 +24,7 @@ const Page = () => {
     const [q, setQ]             = useState(qsearch != null ? qsearch : '');
     const [cat, setCat]         = useState(qcat != null ? qcat : '');
     const [estado, setEstado]   = useState(qestado != null ? qestado : '');
+    const [paginaAtual, setPaginaAtual] = useState(1);
 
     const [categorias, setCategorias]   = useState([]);
     const [estados, setEstados]         = useState([]);
@@ -37,12 +38,14 @@ const Page = () => {
 
     const getItemsFilter = async () => {
         setCarregando(true);
+        let offset = (paginaAtual-1)*9;
         const json = await api.getAds({
             sort: 'desc',
             limit: 9,
             q,
             cat,
-            state:estado
+            state:estado,
+            offset
         });
         setAdList(json.ads);
         setTotalItems(json.total);
@@ -73,8 +76,15 @@ const Page = () => {
 
         timer = setTimeout(getItemsFilter, 1000);
         setOpacidade(0.3);
+        setPaginaAtual(1);
         // eslint-disable-next-line
     }, [q, cat, estado]);
+
+    useEffect(()=>{
+        setOpacidade(0.3);
+        getItemsFilter();
+        // eslint-disable-next-line
+    }, [paginaAtual]);
 
     useEffect(()=>{
         setPaginas(Math.ceil(totalItems/adList.length));
@@ -160,7 +170,7 @@ const Page = () => {
                 </div>
                 <div className="rightSide">
                     
-                    {carregando &&
+                    {carregando && adList.length === 0 &&
                         <div className="avisos">Carregando...</div>
                     }
                     {!carregando && adList.length === 0 &&
@@ -175,7 +185,12 @@ const Page = () => {
 
                     <div className="paginacao">
                         {pag.map((i, k)=>
-                            <div className="numPaginacao">{i}</div>
+                            <div 
+                                onClick={()=>setPaginaAtual(i)}
+                                className={i===paginaAtual?"numPaginacao ativo":"numPaginacao"}
+                            >
+                                {i}
+                            </div>
                         )}
                     </div>
                 </div>
