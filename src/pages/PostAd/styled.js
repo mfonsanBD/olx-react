@@ -69,8 +69,14 @@ export const PageArea = styled.div`
             padding:10px;
     
             .area{
+                flex-direction:column;
+
                 .area--title{
-                    width:100px;
+                    width:100%;
+                    text-align:left;
+                }
+                .area--input{
+                    width:100%;
                 }
             }
     }
